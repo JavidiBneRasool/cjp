@@ -90,19 +90,20 @@ export function Hero() {
 
   return (
     <section className="relative h-screen w-full flex flex-col items-center justify-center overflow-hidden bg-black text-white">
-      {/* Poster Backgrounds */}
-      <div className="absolute inset-0 z-0">
+      {/* Poster Backgrounds - Fitted and Centered */}
+      <div className="absolute inset-0 z-0 flex items-center justify-center p-4 md:p-12 lg:p-16">
         {posters.map((poster, index) => (
           <div
             key={poster.id}
-            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${index === activeIndex ? 'opacity-100' : 'opacity-0'}`}
+            className={`absolute inset-0 flex items-center justify-center transition-all duration-1000 ease-in-out ${index === activeIndex ? 'opacity-100 scale-100 translate-y-0' : 'opacity-0 scale-95 translate-y-4'}`}
           >
             <img 
               src={poster.src} 
               alt={poster.title} 
-              className="w-full h-full object-cover md:object-contain bg-black"
+              className="max-w-full max-h-full w-auto h-auto object-contain shadow-2xl shadow-saffron/10 rounded-lg"
             />
-            <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]" />
+            {/* Darkening overlay for text readability, only on the active poster */}
+            <div className="absolute inset-0 bg-black/40 z-[1]" />
           </div>
         ))}
       </div>
@@ -111,7 +112,7 @@ export function Hero() {
       <div className="cockroach-crawl"></div>
 
       {/* Content Overlay */}
-      <div className="container mx-auto px-4 z-10 text-center flex flex-col items-center justify-center h-full pt-20">
+      <div className="container mx-auto px-4 z-10 text-center flex flex-col items-center justify-center h-full pt-20 relative">
         <div className="inline-block px-4 py-1.5 mb-6 rounded-full bg-saffron/20 border border-saffron/40 text-saffron text-sm font-bold uppercase tracking-widest animate-fade-in shake cursor-pointer" onClick={() => setActiveChapter(posters[activeIndex])}>
           🪳 Chapter {activeIndex + 1}: {posters[activeIndex].chapter}
         </div>
