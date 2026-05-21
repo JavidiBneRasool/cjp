@@ -75,10 +75,10 @@ export function Manifesto() {
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-green/5 rounded-full translate-y-1/2 -translate-x-1/2 blur-3xl" />
 
       <div className="container mx-auto relative z-10">
-        <div className="text-center max-w-3xl mx-auto mb-20">
-          <h2 className="text-sm font-bold text-saffron uppercase tracking-[0.3em] mb-4">The Kashmir Manifesto</h2>
-          <h3 className="text-3xl md:text-5xl font-bold mb-6">10 Promises to the Valley That Fed Us</h3>
-          <p className="text-lg text-foreground/60 leading-relaxed">
+        <div className="text-center max-w-3xl mx-auto mb-20 reveal">
+          <h2 className="text-sm font-bold text-saffron uppercase tracking-[0.3em] mb-4 neon">The Kashmir Manifesto</h2>
+          <h3 className="text-3xl md:text-5xl font-bold mb-6 glitch">10 Promises to the Valley That Fed Us</h3>
+          <p className="text-lg text-foreground/60 leading-relaxed scramble">
             We are not just a protest. We are a blueprint. These are our non-negotiable pillars for a 
             dignified, transparent, and prosperous Kashmir.
           </p>
@@ -88,7 +88,7 @@ export function Manifesto() {
           {promises.map((promise, index) => (
             <div 
               key={index}
-              className="group p-8 rounded-2xl bg-background border border-charcoal/5 dark:border-white/5 hover:border-saffron/30 transition-all duration-300 hover:shadow-2xl hover:shadow-saffron/10 hover:-translate-y-1"
+              className="promise-card card-aggressive reveal group p-8 rounded-2xl bg-background border border-charcoal/5 dark:border-white/5 hover:border-saffron/30 transition-all duration-300 hover:shadow-2xl hover:shadow-saffron/10 hover:-translate-y-1"
             >
               <div className="mb-6 transform transition-transform group-hover:scale-110 duration-300 origin-left">
                 {promise.icon}
@@ -100,7 +100,7 @@ export function Manifesto() {
                 {promise.description}
               </p>
               <div className="mt-6 pt-6 border-t border-charcoal/5 dark:border-white/5 opacity-0 group-hover:opacity-100 transition-opacity">
-                <span className="text-saffron text-xs font-bold uppercase tracking-widest cursor-pointer hover:underline">
+                <span className="text-saffron text-xs font-bold uppercase tracking-widest cursor-pointer hover:underline shake">
                   See Action Plan →
                 </span>
               </div>
@@ -108,11 +108,11 @@ export function Manifesto() {
           ))}
 
           {/* Vision Sticky-style Card */}
-          <div className="lg:col-span-1 p-8 rounded-2xl bg-charcoal text-white flex flex-col justify-between border border-white/10 shadow-xl relative overflow-hidden group">
+          <div className="lg:col-span-1 p-8 rounded-2xl bg-charcoal text-white flex flex-col justify-between border border-white/10 shadow-xl relative overflow-hidden group reveal reveal-delay-4 card-aggressive">
             <div className="absolute top-0 right-0 w-32 h-32 bg-saffron/20 rounded-full -translate-y-1/2 translate-x-1/2 blur-2xl group-hover:bg-saffron/40 transition-colors" />
             
             <div>
-              <h4 className="text-gold font-bold text-xs uppercase tracking-widest mb-6">CJP Kashmir 2030 Goals</h4>
+              <h4 className="text-gold font-bold text-xs uppercase tracking-widest mb-6 neon">CJP Kashmir 2030 Goals</h4>
               <ul className="space-y-4">
                 {[
                   '100% digital literacy in rural schools',
@@ -130,7 +130,7 @@ export function Manifesto() {
             </div>
 
             <div className="mt-12">
-              <p className="text-xs text-white/40 italic leading-relaxed">
+              <p className="text-xs text-white/40 italic leading-relaxed scramble">
                 "Not every 5 years — <br />Every 30 days."
               </p>
             </div>

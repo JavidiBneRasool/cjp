@@ -48,7 +48,7 @@ export function FoundersStory() {
           <div className="mt-16 flex items-center space-x-6">
             <div className="w-16 h-16 rounded-full bg-charcoal dark:bg-white/10 flex items-center justify-center text-saffron text-2xl font-bold">🪳</div>
             <div>
-              <p className="font-bold text-lg">Javidi Bne Rasool</p>
+              <p className="font-bold text-lg">iBne Rasool</p>
               <p className="text-sm text-foreground/50 uppercase tracking-widest">Founder, CJP Kashmir</p>
             </div>
           </div>
