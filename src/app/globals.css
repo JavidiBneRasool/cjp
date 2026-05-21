@@ -79,28 +79,49 @@ h1, h2, h3, h4, h5, h6 {
   animation: glitch 0.2s infinite, glitch-color 2s infinite;
 }
 
-/* Cockroach Crawl Animation */
-@keyframes crawl {
+/* Cockroach Walk Animation (Slow Motion) */
+@keyframes walk {
   0% { 
-    transform: translateX(-100vw) rotate(0deg);
-    opacity: 0;
+    transform: translateX(-10vw) translateY(0) rotate(90deg);
   }
-  10% { opacity: 1; }
-  90% { opacity: 1; }
+  25% {
+    transform: translateX(20vw) translateY(5px) rotate(85deg);
+  }
+  50% {
+    transform: translateX(50vw) translateY(-5px) rotate(95deg);
+  }
+  75% {
+    transform: translateX(80vw) translateY(5px) rotate(88deg);
+  }
   100% { 
-    transform: translateX(100vw) rotate(360deg);
-    opacity: 0;
+    transform: translateX(110vw) translateY(0) rotate(90deg);
   }
 }
 
+@keyframes leg-wiggle {
+  0%, 100% { transform: scaleY(1); }
+  50% { transform: scaleY(0.8); }
+}
+
 .cockroach-crawl {
-  position: fixed;
-  top: 20%;
-  font-size: 2rem;
-  animation: crawl 8s linear infinite;
+  position: absolute;
+  top: 40%;
+  left: 0;
+  font-size: 3rem;
+  animation: walk 30s linear infinite;
   z-index: 50;
   pointer-events: none;
-  opacity: 0.3;
+  opacity: 0.6;
+  filter: drop-shadow(0 5px 5px rgba(0,0,0,0.5));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cockroach-crawl::after {
+  content: '🪳';
+  display: block;
+  animation: leg-wiggle 0.2s ease-in-out infinite;
 }
 
 /* Pulse Glow Effect */
