@@ -111,50 +111,53 @@ export function Hero() {
       {/* Crawling cockroach */}
       <div className="cockroach-crawl"></div>
 
-      {/* Content Overlay */}
-      <div className="container mx-auto px-4 z-10 text-center flex flex-col items-center justify-center h-full pt-20 relative">
-        <div className="inline-block px-4 py-1.5 mb-6 rounded-full bg-saffron/20 border border-saffron/40 text-saffron text-sm font-bold uppercase tracking-widest animate-fade-in shake cursor-pointer" onClick={() => setActiveChapter(posters[activeIndex])}>
-          🪳 Chapter {activeIndex + 1}: {posters[activeIndex].chapter}
-        </div>
-        
-        <h1 
-          className="text-4xl md:text-8xl font-bold tracking-tight mb-6 leading-tight max-w-6xl mx-auto glitch cursor-pointer transition-transform hover:scale-105"
-          onClick={() => setActiveChapter(posters[activeIndex])}
-        >
-          {posters[activeIndex].title}
-        </h1>
-        
-        <p className="text-lg md:text-2xl text-white/80 max-w-3xl mx-auto mb-12 leading-relaxed font-medium scramble">
-          {posters[activeIndex].quote}
-        </p>
-        
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
-          <button
-            onClick={() => setShowJoinModal(true)}
-            className="w-full sm:w-auto bg-saffron text-white px-10 py-4 rounded-full text-lg font-bold shadow-xl shadow-saffron/30 hover:bg-saffron/90 transition-all transform hover:scale-105 active:scale-95 btn-aggressive pulse-glow"
-          >
-            Join the Swarm
-          </button>
-          <button
+      {/* Content Overlay - Positioned Below Posters */}
+      <div className="container mx-auto px-4 z-10 text-center flex flex-col items-center justify-end pb-24 h-full relative pointer-events-none">
+        <div className="flex flex-col items-center pointer-events-auto">
+          <div className="inline-block px-4 py-1.5 mb-6 rounded-full bg-saffron/20 border border-saffron/40 text-saffron text-sm font-bold uppercase tracking-widest animate-fade-in shake cursor-pointer" onClick={() => setActiveChapter(posters[activeIndex])}>
+            🪳 Chapter {activeIndex + 1}: {posters[activeIndex].chapter}
+          </div>
+          
+          <h1 
+            className="text-3xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-4 leading-tight max-w-6xl mx-auto glitch cursor-pointer transition-transform hover:scale-105"
             onClick={() => setActiveChapter(posters[activeIndex])}
-            className="w-full sm:w-auto bg-transparent border-2 border-white/20 px-10 py-4 rounded-full text-lg font-bold hover:bg-white/5 transition-all btn-aggressive"
           >
-            Read Chapter Details ↓
-          </button>
-        </div>
+            {posters[activeIndex].title}
+          </h1>
+          
+          <p className="text-base md:text-xl text-white/80 max-w-2xl mx-auto mb-10 leading-relaxed font-medium scramble">
+            {posters[activeIndex].quote}
+          </p>
+          
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10">
+            <button
+              onClick={() => setShowJoinModal(true)}
+              className="w-full sm:w-auto bg-saffron text-white px-8 py-3 rounded-full text-base font-bold shadow-xl shadow-saffron/30 hover:bg-saffron/90 transition-all transform hover:scale-105 active:scale-95 btn-aggressive pulse-glow"
+            >
+              Join the Swarm
+            </button>
+            <button
+              onClick={() => setActiveChapter(posters[activeIndex])}
+              className="w-full sm:w-auto bg-transparent border-2 border-white/20 px-8 py-3 rounded-full text-base font-bold hover:bg-white/5 transition-all btn-aggressive"
+            >
+              Read Chapter Details ↓
+            </button>
+          </div>
 
-        {/* Social Icons */}
-        <div className="flex space-x-8 mb-12">
-          <a href="https://instagram.com/cjpkasmir" target="_blank" rel="noopener noreferrer" className="text-white/50 hover:text-saffron transition-colors">
-            <Instagram className="w-6 h-6" />
-          </a>
-          <a href="https://facebook.com/cjpkasmir" target="_blank" rel="noopener noreferrer" className="text-white/50 hover:text-saffron transition-colors">
-            <Facebook className="w-6 h-6" />
-          </a>
-          <a href="https://t.me/cjpkashmir" target="_blank" rel="noopener noreferrer" className="text-white/50 hover:text-saffron transition-colors">
-            <Telegram className="w-6 h-6" />
-          </a>
+          {/* Social Icons */}
+          <div className="flex space-x-6 mb-4">
+            <a href="https://instagram.com/cjpkasmir" target="_blank" rel="noopener noreferrer" className="text-white/50 hover:text-saffron transition-colors">
+              <Instagram className="w-5 h-5" />
+            </a>
+            <a href="https://facebook.com/cjpkasmir" target="_blank" rel="noopener noreferrer" className="text-white/50 hover:text-saffron transition-colors">
+              <Facebook className="w-5 h-5" />
+            </a>
+            <a href="https://t.me/cjpkashmir" target="_blank" rel="noopener noreferrer" className="text-white/50 hover:text-saffron transition-colors">
+              <Telegram className="w-5 h-5" />
+            </a>
+          </div>
         </div>
+      </div>
 
         {/* Navigation */}
         <div className="absolute inset-y-0 left-4 flex items-center z-20">
