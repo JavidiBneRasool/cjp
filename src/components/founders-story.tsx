@@ -4,13 +4,13 @@ import * as React from 'react'
 
 export function FoundersStory() {
   return (
-    <section className="py-24 px-4 bg-background overflow-hidden">
-      <div className="container mx-auto">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-sm font-bold text-saffron uppercase tracking-[0.3em] mb-6">The Origin</h2>
-          <h3 className="text-3xl md:text-5xl font-bold mb-10 leading-tight">Founder's Story: <br /><span className="text-foreground/60 italic">"Silence has become too expensive"</span></h3>
+    <section className="bg-background overflow-hidden border-t border-white/5">
+      <div className="container mx-auto px-4">
+        <div className="max-w-3xl mx-auto">
+          <h2 className="text-[10px] font-black text-saffron uppercase tracking-[0.4em] mb-4">The Origin</h2>
+          <h3 className="text-2xl md:text-4xl font-black mb-8 leading-none tracking-tighter uppercase italic">Founder's Story: <br /><span className="text-foreground/40">Silence is too expensive</span></h3>
           
-          <div className="space-y-8 text-lg md:text-xl text-foreground/80 leading-relaxed font-serif">
+          <div className="space-y-4 text-xs md:text-sm text-foreground/70 leading-relaxed italic">
             <p>
               I grew up in the valleys of Kashmir, where the beauty of the mountains often masked the 
               ugliness of the systems meant to govern us. I saw friends with double masters degrees 
@@ -18,13 +18,11 @@ export function FoundersStory() {
               development funds vanished into thin air.
             </p>
             
-            <div className="relative py-12 my-12">
-              <div className="absolute top-0 left-0 w-16 h-1 bg-saffron" />
-              <blockquote className="text-3xl md:text-4xl font-bold text-foreground leading-tight tracking-tight">
+            <div className="relative py-8 my-8 border-l-2 border-saffron pl-6">
+              <blockquote className="text-lg md:text-2xl font-black text-foreground leading-tight tracking-tight uppercase">
                 "Kashmir has rivers powerful enough to light nations, yet our villages face 
                 electricity shortages every winter. This is not bad luck. This is a choice made by those in power."
               </blockquote>
-              <div className="absolute bottom-0 right-0 w-16 h-1 bg-green" />
             </div>
 
             <p>
@@ -33,23 +31,22 @@ export function FoundersStory() {
               calling us a 'nuisance' and 'pests'. 
             </p>
             
-            <p className="font-bold text-foreground">
+            <p className="font-black text-foreground uppercase tracking-tight">
               Fine. If we are pests to your corruption, then let us be the Cockroaches that survive 
               your poison. 
             </p>
 
             <p>
               We are not against peace. We are against systems that profit while innocent people suffer. 
-              We are here to rebuild Kashmir, one village at a time, through the only thing that 
-              actually terrifies a corrupt man: <span className="text-saffron underline decoration-2 underline-offset-4">Radical Transparency.</span>
+              We are here to rebuild Kashmir, one village at a time, through <span className="text-saffron underline decoration-2 underline-offset-4 font-black">Radical Transparency.</span>
             </p>
           </div>
 
-          <div className="mt-16 flex items-center space-x-6">
-            <div className="w-16 h-16 rounded-full bg-charcoal dark:bg-white/10 flex items-center justify-center text-saffron text-2xl font-bold">🪳</div>
+          <div className="mt-8 flex items-center space-x-4">
+            <div className="w-12 h-12 rounded bg-black flex items-center justify-center text-saffron text-xl font-bold mag-border shadow-lg">🪳</div>
             <div>
-              <p className="font-bold text-lg">iBne Rasool</p>
-              <p className="text-sm text-foreground/50 uppercase tracking-widest">Founder, CJP Kashmir</p>
+              <p className="text-[10px] font-black uppercase text-foreground">iBneRasool</p>
+              <p className="text-[8px] font-bold uppercase text-foreground/40">Founder, CJP Kashmir</p>
             </div>
           </div>
         </div>

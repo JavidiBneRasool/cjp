@@ -44,29 +44,28 @@ const problems = [
 
 export function RealProblems() {
   return (
-    <section className="py-24 px-4 bg-card-bg">
-      <div className="container mx-auto">
-        <div className="max-w-3xl mb-16">
-          <h2 className="text-sm font-bold text-saffron uppercase tracking-[0.3em] mb-4">The Reality Check</h2>
-          <h3 className="text-3xl md:text-5xl font-bold mb-6">Real Problems of Kashmir</h3>
-          <p className="text-lg text-foreground/60 leading-relaxed">
-            While others debate ideology, we document the survival struggle of every Kashmiri. 
-            The system isn't just broken; it's designed to ignore these.
+    <section className="bg-card-bg border-t border-white/5">
+      <div className="container mx-auto px-4">
+        <div className="max-w-2xl mb-10">
+          <h2 className="text-[10px] font-black text-saffron uppercase tracking-[0.4em] mb-2">Reality Check</h2>
+          <h3 className="text-2xl md:text-4xl font-black mb-4 tracking-tighter uppercase italic">Real Problems</h3>
+          <p className="text-sm text-foreground/50 leading-relaxed italic">
+            Documenting the survival struggle. The system isn't broken; it's designed this way.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {problems.map((problem, index) => (
             <div 
               key={index}
-              className={`p-10 rounded-[2.5rem] border transition-all hover:shadow-xl ${problem.color}`}
+              className={`p-6 rounded border transition-all card-aggressive ${problem.color}`}
             >
-              <div className="mb-8">{problem.icon}</div>
-              <h4 className="text-2xl font-bold mb-6">{problem.category}</h4>
-              <ul className="space-y-4">
+              <div className="mb-4">{problem.icon}</div>
+              <h4 className="text-lg font-black uppercase tracking-tight mb-4 italic">{problem.category}</h4>
+              <ul className="space-y-2">
                 {problem.items.map((item, i) => (
-                  <li key={i} className="flex items-center space-x-3 text-foreground/70">
-                    <span className="w-1.5 h-1.5 rounded-full bg-foreground/20" />
+                  <li key={i} className="flex items-center space-x-2 text-[10px] font-bold uppercase text-foreground/60">
+                    <span className="w-1 h-1 rounded-full bg-saffron" />
                     <span>{item}</span>
                   </li>
                 ))}
@@ -75,10 +74,9 @@ export function RealProblems() {
           ))}
 
           {/* Pull Quote Card */}
-          <div className="lg:col-span-1 p-10 rounded-[2.5rem] bg-charcoal text-white flex items-center justify-center text-center relative overflow-hidden group">
-            <div className="absolute top-0 right-0 w-32 h-32 bg-saffron/20 rounded-full -translate-y-1/2 translate-x-1/2 blur-2xl group-hover:bg-saffron/40 transition-colors" />
-            <blockquote className="text-2xl font-bold leading-tight relative z-10">
-              "We are not against peace. We are against systems that profit while innocent people suffer."
+          <div className="lg:col-span-1 p-6 rounded bg-black text-white flex items-center justify-center text-center relative overflow-hidden group border border-white/10">
+            <blockquote className="text-lg font-black leading-tight relative z-10 uppercase italic tracking-tighter">
+              "We are against systems that profit while innocent people suffer."
             </blockquote>
           </div>
         </div>

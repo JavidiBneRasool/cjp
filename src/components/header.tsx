@@ -24,7 +24,7 @@ export function Header() {
 
   React.useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20)
+      setIsScrolled(window.scrollY > 10)
     }
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
@@ -35,8 +35,8 @@ export function Header() {
       className={cn(
         'sticky top-0 z-50 w-full transition-all duration-300 border-b',
         isScrolled
-          ? 'bg-background/80 backdrop-blur-md border-charcoal/10 py-2'
-          : 'bg-transparent border-transparent py-4'
+          ? 'bg-black/90 backdrop-blur-md border-white/5 py-1'
+          : 'bg-transparent border-transparent py-2'
       )}
     >
       <div className="container mx-auto px-4 flex items-center justify-between">
@@ -44,31 +44,32 @@ export function Header() {
           <img 
             src="/assets/logo.jpg" 
             alt="CJP Kashmir Logo" 
-            className="h-12 md:h-16 w-auto object-contain transition-transform group-hover:scale-105"
+            className="h-8 md:h-10 w-auto object-contain transition-transform group-hover:scale-105"
           />
+          <span className="ml-2 text-xs font-black uppercase tracking-tighter text-white">CJP Kashmir</span>
         </Link>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center space-x-8">
+        <nav className="hidden md:flex items-center space-x-6">
           {navLinks.map((link) => (
             <Link
               key={link.name}
               href={link.href}
-              className="text-sm font-medium hover:text-saffron transition-colors"
+              className="text-[10px] font-black uppercase tracking-widest hover:text-saffron transition-colors text-white/50"
             >
               {link.name}
             </Link>
           ))}
-          <div className="flex items-center space-x-2 pl-4 border-l border-charcoal/10">
-            <button className="text-xs font-bold px-2 py-1 rounded hover:bg-charcoal/5 dark:hover:bg-white/5 transition-colors">
+          <div className="flex items-center space-x-2 pl-3 border-l border-white/10">
+            <button className="text-[10px] font-black uppercase tracking-widest px-2 py-1 rounded hover:bg-white/5 transition-colors text-white/30">
               اردو
             </button>
             <ThemeToggle />
             <Link
               href="#join"
-              className="bg-saffron hover:bg-saffron/90 text-white px-5 py-2 rounded-full text-sm font-bold transition-all transform hover:scale-105 active:scale-95 shadow-lg shadow-saffron/20"
+              className="bg-saffron hover:bg-saffron/90 text-white px-4 py-1.5 rounded text-[10px] font-black uppercase tracking-widest transition-all transform hover:scale-105 active:scale-95 shadow-lg shadow-saffron/10"
             >
-              Join the Swarm
+              Join
             </Link>
           </div>
         </nav>

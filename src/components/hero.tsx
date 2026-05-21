@@ -72,7 +72,6 @@ export function Hero() {
   const handleJoinSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     setIsSending(true)
-    // Simulate sending to info@cjpkashmir.in
     setTimeout(() => {
       alert(`Encrypted message sent to the Colony: ${message}`)
       setIsSending(false)
@@ -89,138 +88,119 @@ export function Hero() {
   }
 
   return (
-    <section className="relative h-screen w-full flex flex-col items-center justify-center overflow-hidden bg-black text-white">
-      {/* Poster Backgrounds - Fitted and Moved Up */}
-      <div className="absolute inset-0 z-0 flex items-center justify-center pt-24 pb-4 px-4 md:pt-28 md:pb-8 md:px-12 lg:pt-32 lg:px-16">
+    <section className="relative min-h-screen w-full flex flex-col bg-black text-white pt-16">
+      {/* Poster Display - Top Half */}
+      <div className="relative w-full h-[55vh] flex items-center justify-center p-4">
         {posters.map((poster, index) => (
           <div
             key={poster.id}
-            className={`absolute inset-0 flex items-center justify-center transition-all duration-1000 ease-in-out ${index === activeIndex ? 'opacity-100 scale-100 translate-y-0' : 'opacity-0 scale-95 translate-y-4'}`}
+            className={`absolute inset-0 flex items-center justify-center transition-all duration-700 ease-in-out ${index === activeIndex ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'}`}
           >
             <img 
               src={poster.src} 
               alt={poster.title} 
-              className="max-w-full max-h-full w-auto h-auto object-contain shadow-2xl shadow-saffron/10 rounded-lg"
+              className="max-w-full max-h-full w-auto h-auto object-contain mag-border shadow-2xl shadow-saffron/5"
             />
-            {/* Darkening overlay for text readability, only on the active poster */}
-            <div className="absolute inset-0 bg-black/40 z-[1]" />
           </div>
         ))}
+
+        {/* Navigation Arrows */}
+        <div className="absolute inset-x-4 top-1/2 -translate-y-1/2 flex justify-between items-center z-20 pointer-events-none">
+          <button onClick={prevPoster} className="p-2 rounded bg-black/40 hover:bg-saffron transition-all pointer-events-auto">
+            <ChevronLeft className="w-5 h-5" />
+          </button>
+          <button onClick={nextPoster} className="p-2 rounded bg-black/40 hover:bg-saffron transition-all pointer-events-auto">
+            <ChevronRight className="w-5 h-5" />
+          </button>
+        </div>
+      </div>
+
+      {/* Content Overlay - Strictly Below Posters */}
+      <div className="container mx-auto px-4 py-6 flex flex-col items-center text-center z-10 flex-grow">
+        <div 
+          className="inline-block px-3 py-1 mb-3 rounded bg-saffron/10 border border-saffron/30 text-saffron text-[9px] font-black uppercase tracking-[0.2em] animate-fade-in shake cursor-pointer"
+          onClick={() => setActiveChapter(posters[activeIndex])}
+        >
+          🪳 CH. {activeIndex + 1}: {posters[activeIndex].chapter}
+        </div>
+        
+        <h1 
+          className="text-2xl md:text-5xl font-black tracking-tighter mb-3 leading-none glitch cursor-pointer uppercase italic"
+          onClick={() => setActiveChapter(posters[activeIndex])}
+        >
+          {posters[activeIndex].title}
+        </h1>
+        
+        <p className="text-xs md:text-base text-white/50 max-w-xl mx-auto mb-6 font-medium italic scramble">
+          {posters[activeIndex].quote}
+        </p>
+        
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-6">
+          <button
+            onClick={() => setShowJoinModal(true)}
+            className="w-full sm:w-auto bg-saffron text-white px-6 py-2.5 rounded text-[10px] font-black uppercase tracking-widest btn-aggressive"
+          >
+            Join the Swarm
+          </button>
+          <button
+            onClick={() => setActiveChapter(posters[activeIndex])}
+            className="w-full sm:w-auto bg-transparent border border-white/20 px-6 py-2.5 rounded text-[10px] font-black uppercase tracking-widest hover:bg-white/5 transition-all btn-aggressive"
+          >
+            Details ↓
+          </button>
+        </div>
+
+        {/* Social Icons */}
+        <div className="flex space-x-6">
+          <a href="https://instagram.com/cjpkasmir" target="_blank" rel="noopener noreferrer" className="text-white/30 hover:text-saffron transition-colors">
+            <Instagram className="w-4 h-4" />
+          </a>
+          <a href="https://facebook.com/cjpkasmir" target="_blank" rel="noopener noreferrer" className="text-white/30 hover:text-saffron transition-colors">
+            <Facebook className="w-4 h-4" />
+          </a>
+          <a href="https://t.me/cjpkashmir" target="_blank" rel="noopener noreferrer" className="text-white/30 hover:text-saffron transition-colors">
+            <Telegram className="w-4 h-4" />
+          </a>
+        </div>
       </div>
 
       {/* Crawling cockroach */}
       <div className="cockroach-crawl"></div>
 
-      {/* Content Overlay - Positioned Below Posters */}
-      <div className="container mx-auto px-4 z-10 text-center flex flex-col items-center justify-end pb-24 h-full relative pointer-events-none">
-        <div className="flex flex-col items-center pointer-events-auto">
-          <div className="inline-block px-4 py-1.5 mb-6 rounded-full bg-saffron/20 border border-saffron/40 text-saffron text-sm font-bold uppercase tracking-widest animate-fade-in shake cursor-pointer" onClick={() => setActiveChapter(posters[activeIndex])}>
-            🪳 Chapter {activeIndex + 1}: {posters[activeIndex].chapter}
-          </div>
-          
-          <h1 
-            className="text-3xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-4 leading-tight max-w-6xl mx-auto glitch cursor-pointer transition-transform hover:scale-105"
-            onClick={() => setActiveChapter(posters[activeIndex])}
-          >
-            {posters[activeIndex].title}
-          </h1>
-          
-          <p className="text-base md:text-xl text-white/80 max-w-2xl mx-auto mb-10 leading-relaxed font-medium scramble">
-            {posters[activeIndex].quote}
-          </p>
-          
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10">
-            <button
-              onClick={() => setShowJoinModal(true)}
-              className="w-full sm:w-auto bg-saffron text-white px-8 py-3 rounded-full text-base font-bold shadow-xl shadow-saffron/30 hover:bg-saffron/90 transition-all transform hover:scale-105 active:scale-95 btn-aggressive pulse-glow"
-            >
-              Join the Swarm
-            </button>
-            <button
-              onClick={() => setActiveChapter(posters[activeIndex])}
-              className="w-full sm:w-auto bg-transparent border-2 border-white/20 px-8 py-3 rounded-full text-base font-bold hover:bg-white/5 transition-all btn-aggressive"
-            >
-              Read Chapter Details ↓
-            </button>
-          </div>
-
-          {/* Social Icons */}
-          <div className="flex space-x-6 mb-4">
-            <a href="https://instagram.com/cjpkasmir" target="_blank" rel="noopener noreferrer" className="text-white/50 hover:text-saffron transition-colors">
-              <Instagram className="w-5 h-5" />
-            </a>
-            <a href="https://facebook.com/cjpkasmir" target="_blank" rel="noopener noreferrer" className="text-white/50 hover:text-saffron transition-colors">
-              <Facebook className="w-5 h-5" />
-            </a>
-            <a href="https://t.me/cjpkashmir" target="_blank" rel="noopener noreferrer" className="text-white/50 hover:text-saffron transition-colors">
-              <Telegram className="w-5 h-5" />
-            </a>
-          </div>
-        </div>
-      </div>
-
-        {/* Navigation */}
-        <div className="absolute inset-y-0 left-4 flex items-center z-20">
-          <button onClick={prevPoster} className="p-3 rounded-full bg-white/10 hover:bg-saffron transition-all">
-            <ChevronLeft className="w-8 h-8" />
-          </button>
-        </div>
-        <div className="absolute inset-y-0 right-4 flex items-center z-20">
-          <button onClick={nextPoster} className="p-3 rounded-full bg-white/10 hover:bg-saffron transition-all">
-            <ChevronRight className="w-8 h-8" />
-          </button>
-        </div>
-
-        {/* Scroll Indicator */}
-        <div 
-          onClick={scrollToNext}
-          className="absolute bottom-8 flex flex-col items-center animate-bounce opacity-70 text-white cursor-pointer hover:opacity-100 transition-opacity"
-        >
-          <span className="text-[10px] uppercase tracking-[0.3em] font-bold mb-2">Scroll to Rise</span>
-          <ArrowDown className="w-5 h-5 text-saffron" />
-        </div>
+      {/* Scroll Indicator */}
+      <div 
+        onClick={scrollToNext}
+        className="pb-4 flex flex-col items-center opacity-30 hover:opacity-100 transition-opacity cursor-pointer animate-bounce"
+      >
+        <span className="text-[7px] uppercase tracking-[0.4em] font-black mb-1">Scroll</span>
+        <ArrowDown className="w-3 h-3 text-saffron" />
       </div>
 
       {/* Chapter View Modal */}
       {activeChapter && (
         <div className="fixed inset-0 z-[100] bg-black/95 animate-in fade-in duration-300 overflow-y-auto">
-          <div className="sticky top-0 z-10 p-6 flex justify-between items-center bg-black/80 backdrop-blur-md border-b border-white/10">
+          <div className="sticky top-0 z-10 p-4 flex justify-between items-center bg-black/80 backdrop-blur-md border-b border-white/10">
             <div className="flex items-center space-x-4">
-              <span className="text-saffron font-bold uppercase tracking-widest text-sm">Chapter: {activeChapter.chapter}</span>
+              <span className="text-saffron font-black uppercase tracking-widest text-[10px]">Chapter: {activeChapter.chapter}</span>
               <span className="w-1 h-1 rounded-full bg-white/20" />
-              <span className="font-bold text-lg">{activeChapter.title}</span>
+              <span className="font-black text-xs uppercase tracking-tighter">{activeChapter.title}</span>
             </div>
-            <button 
-              onClick={() => setActiveChapter(null)}
-              className="p-2 rounded-full hover:bg-white/10 transition-colors"
-            >
-              <X className="w-6 h-6" />
+            <button onClick={() => setActiveChapter(null)} className="p-2 rounded-full hover:bg-white/10 transition-colors">
+              <X className="w-5 h-5" />
             </button>
           </div>
 
-          <div className="container mx-auto px-4 py-16">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-              <div>
-                <img 
-                  src={activeChapter.src} 
-                  alt={activeChapter.title} 
-                  className="w-full h-auto rounded-3xl shadow-2xl border border-white/10"
-                />
+          <div className="container mx-auto px-4 py-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+              <div className="max-w-md mx-auto lg:max-w-none">
+                <img src={activeChapter.src} alt={activeChapter.title} className="w-full h-auto rounded mag-border shadow-2xl" />
               </div>
-              <div className="space-y-12">
-                <div className="prose prose-lg dark:prose-invert">
-                  <h2 className="text-4xl md:text-6xl font-bold mb-8 leading-tight glitch text-white">{activeChapter.title}</h2>
-                  <p className="text-2xl text-white/80 leading-relaxed font-serif italic">
-                    {activeChapter.content}
-                  </p>
-                </div>
-
-                <div className="p-8 rounded-3xl bg-saffron/5 border border-saffron/20">
-                  <h4 className="font-bold text-saffron uppercase tracking-widest text-sm mb-4">Colony Intel</h4>
-                  <p className="text-white/70 leading-relaxed">
-                    This poster is part of our strategic narrative mapping. Each chapter reveals a different 
-                    layer of the systemic glitch we are here to expose and fix.
-                  </p>
+              <div className="space-y-6">
+                <h2 className="text-3xl md:text-5xl font-black leading-none glitch text-white uppercase italic">{activeChapter.title}</h2>
+                <p className="text-lg text-white/70 leading-relaxed italic font-serif">{activeChapter.content}</p>
+                <div className="p-6 rounded bg-saffron/5 border border-saffron/20">
+                  <h4 className="font-black text-saffron uppercase tracking-widest text-[10px] mb-2">Colony Intel</h4>
+                  <p className="text-xs text-white/50 leading-relaxed italic">Strategic narrative mapping for the systemic glitch.</p>
                 </div>
               </div>
             </div>
@@ -231,37 +211,24 @@ export function Hero() {
       {/* Join the Swarm Modal */}
       {showJoinModal && (
         <div className="fixed inset-0 z-[110] flex items-center justify-center p-4 bg-black/90 backdrop-blur-sm animate-in fade-in zoom-in duration-300">
-          <div className="bg-charcoal border border-white/10 p-8 md:p-12 rounded-[2.5rem] max-w-2xl w-full shadow-2xl relative">
-            <button 
-              onClick={() => setShowJoinModal(false)}
-              className="absolute top-6 right-6 p-2 rounded-full hover:bg-white/10 transition-colors"
-            >
-              <X className="w-6 h-6" />
+          <div className="bg-black border border-white/10 p-6 md:p-10 rounded max-w-lg w-full shadow-2xl relative">
+            <button onClick={() => setShowJoinModal(false)} className="absolute top-4 right-4 p-2 rounded-full hover:bg-white/10 transition-colors">
+              <X className="w-5 h-5" />
             </button>
-
-            <h2 className="text-saffron font-bold uppercase tracking-widest text-sm mb-4">Transmission Channel</h2>
-            <h3 className="text-3xl font-bold mb-6 glitch text-white">Join the Swarm</h3>
-            <p className="text-white/60 mb-8">
-              Send an encrypted message directly to the Colony. Your voice is your weapon. 
-              Data sent to: <span className="text-saffron">info@cjpkashmir.in</span>
-            </p>
-
-            <form onSubmit={handleJoinSubmit} className="space-y-6">
+            <h2 className="text-saffron font-black uppercase tracking-widest text-[10px] mb-2">Transmission Channel</h2>
+            <h3 className="text-2xl font-black mb-4 glitch text-white uppercase italic">Join the Swarm</h3>
+            <p className="text-[10px] text-white/40 mb-6 uppercase tracking-tight">Data sent to: <span className="text-saffron">info@cjpkashmir.in</span></p>
+            <form onSubmit={handleJoinSubmit} className="space-y-4">
               <textarea
                 required
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
-                className="w-full bg-black/50 border border-white/10 rounded-2xl p-6 min-h-[200px] text-white focus:outline-none focus:ring-2 focus:ring-saffron/50 transition-all resize-none"
-                placeholder="Write your message to the colony... Why do you want to join? What can you contribute?"
+                className="w-full bg-white/5 border border-white/10 rounded p-4 h-32 text-xs text-white focus:outline-none focus:ring-1 focus:ring-saffron transition-all resize-none italic"
+                placeholder="Transmission details..."
               />
-
-              <button 
-                type="submit"
-                disabled={isSending}
-                className="w-full bg-saffron text-white py-5 rounded-2xl font-bold flex items-center justify-center space-x-2 hover:bg-saffron/90 transition-all group disabled:opacity-50"
-              >
-                <span>{isSending ? 'Encrypting...' : 'Send Encrypted Message'}</span>
-                {!isSending && <Send className="w-5 h-5 transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />}
+              <button type="submit" disabled={isSending} className="w-full bg-saffron text-white py-3 rounded text-[10px] font-black uppercase tracking-widest hover:bg-saffron/90 transition-all flex items-center justify-center space-x-2">
+                <span>{isSending ? 'Encrypting...' : 'Send Transmission'}</span>
+                {!isSending && <Send className="w-4 h-4" />}
               </button>
             </form>
           </div>
