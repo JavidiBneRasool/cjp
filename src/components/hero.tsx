@@ -90,8 +90,8 @@ export function Hero() {
 
   return (
     <section className="relative h-screen w-full flex flex-col items-center justify-center overflow-hidden bg-black text-white">
-      {/* Poster Backgrounds - Fitted and Centered */}
-      <div className="absolute inset-0 z-0 flex items-center justify-center p-4 md:p-12 lg:p-16">
+      {/* Poster Backgrounds - Fitted and Moved Up */}
+      <div className="absolute inset-0 z-0 flex items-center justify-center pt-24 pb-4 px-4 md:pt-28 md:pb-8 md:px-12 lg:pt-32 lg:px-16">
         {posters.map((poster, index) => (
           <div
             key={poster.id}
